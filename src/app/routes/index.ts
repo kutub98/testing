@@ -3,12 +3,12 @@ import { UserRoutes } from '../modules/User/user.route';
 import { BannerRoutes } from '../modules/Banner/Banner.route';
 
 import { OfferRouter } from '../modules/Offer/Package.route';
-import { QuizDataRouter } from '../modules/quizData/quizData.route';
 import { JudgesRouter } from '../modules/judgePannel/judge.route';
 import { TimeInstructionRouter } from '../modules/timeInstruction/timeInstruction.route';
 import { FaQRouter } from '../modules/FqA/faq.route';
 import { EventRouter } from '../modules/events/event.route';
-import { QuestionRoutes } from '../modules/questions/questions.route';
+import { QuestionRouter } from '../modules/questions/questions.route';
+import { QuizDataRouter } from '../modules/quiz/quiz.route';
 
 type TModuleRoutes = {
   path: string;
@@ -54,7 +54,7 @@ const moduleRoutes: TModuleRoutes[] = [
   },
   {
     path: '/questions',
-    route: QuestionRoutes,
+    route: QuestionRouter,
   },
 ];
 
