@@ -1,14 +1,13 @@
 import { Router } from 'express';
 import { UserRoutes } from '../modules/User/user.route';
 import { BannerRoutes } from '../modules/Banner/Banner.route';
-
 import { OfferRouter } from '../modules/Offer/Package.route';
 import { JudgesRouter } from '../modules/judgePannel/judge.route';
 import { TimeInstructionRouter } from '../modules/timeInstruction/timeInstruction.route';
 import { FaQRouter } from '../modules/FqA/faq.route';
 import { EventRouter } from '../modules/events/event.route';
 import { QuestionRouter } from '../modules/questions/questions.route';
-import { QuizDataRouter } from '../modules/quiz/quiz.route';
+import { QuizRouter } from '../modules/quiz/quiz.route';
 
 type TModuleRoutes = {
   path: string;
@@ -19,19 +18,17 @@ const router = Router();
 
 const moduleRoutes: TModuleRoutes[] = [
   {
-    path: '/users',
+    path: '/user',
     route: UserRoutes,
   },
   {
     path: '/banner',
     route: BannerRoutes,
   },
-
   {
     path: '/quiz-data',
-    route: QuizDataRouter,
+    route: QuizRouter,
   },
-
   {
     path: '/offers',
     route: OfferRouter,

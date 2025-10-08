@@ -13,4 +13,4 @@ router.post(
 
 router.get('/:eventId/questions', QuestionController.list);
 
-export const QuestionRoutes = router;
+export const QuestionRouter = router;
