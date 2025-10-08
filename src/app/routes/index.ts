@@ -17,10 +17,10 @@ type TModuleRoutes = {
 const router = Router();
 
 const moduleRoutes: TModuleRoutes[] = [
-  // {
-  //   path: '/user',
-  //   route: UserRoutes,
-  // },
+  {
+    path: '/user',
+    route: UserRoutes,
+  },
   {
     path: '/banner',
     route: BannerRoutes,
