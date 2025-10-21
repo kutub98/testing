@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
 import { AuthRequest } from '../../middleware/auth.middleware';
 import { Participation } from './participation.model';
-import { questionImageUpload, getFileInfo } from '../../config/questionUpload';
+import { getFileInfo } from '../../config/questionUpload';
 import { Event } from '../events/event.model';
 
 export const createParticipation = async (req: Request, res: Response) => {
@@ -142,7 +143,6 @@ export const submitParticipationAnswer = async (
       const files = Array.isArray(req.files)
         ? req.files
         : Object.values(req.files).flat();
-      // @ts-ignore
       participantImages = files.map((file) => getFileInfo(file));
     }
 

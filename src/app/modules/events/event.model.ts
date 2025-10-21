@@ -1,28 +1,43 @@
-import { Schema, model, Types } from 'mongoose';
-import { IEvent } from './event.interface';
+import mongoose, { Schema, Document } from "mongoose";
+
+export interface IEvent extends Document {
+  title: string;
+  description?: string;
+  startDate: Date;
+  endDate: Date;
+  createdBy: mongoose.Types.ObjectId;
+  quizzes: mongoose.Types.ObjectId[];
+  isActive: boolean;
+  status: 'upcoming' | 'ongoing' | 'completed';
+  participants: mongoose.Types.ObjectId[];
+}
 
 const EventSchema = new Schema<IEvent>(
   {
-    event_name: { type: String, required: true },
-    total_question: { type: Number, required: true },
-    duration: {
-      hours: { type: Number, default: 0 },
-      minutes: { type: Number, default: 0 },
-      seconds: { type: Number, default: 0 },
+    title: { type: String, required: true },
+    description: { type: String },
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true },
+    createdBy: { type: Schema.Types.ObjectId, ref: "User", required: false },
+    quizzes: [{ type: Schema.Types.ObjectId, ref: "Quiz" }],
+    isActive: { type: Boolean, default: true },
+    status: { 
+      type: String, 
+      enum: ['upcoming', 'ongoing', 'completed'],
+      default: 'upcoming'
     },
-    start_time: { type: String, required: true },
-    end_time: { type: String, required: true },
-    time_for: {
-      hours: { type: Number, default: 0 },
-      minutes: { type: Number, default: 0 },
-      seconds: { type: Number, default: 0 },
-      short: { type: Number, default: 0 },
-      written: { type: Number, default: 0 },
-      mcq: { type: Number, default: 0 },
-    },
-    questions: [{ type: Types.ObjectId, ref: 'Question', default: [] }], // ✅ default empty array
+    participants: [{ type: Schema.Types.ObjectId, ref: "User" }], 
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
-export const Event = model<IEvent>('Event', EventSchema);
+// Update status based on dates
+EventSchema.methods.updateStatus = function() {
+  const now = new Date();
+  if (now < this.startDate) this.status = 'upcoming';
+  else if (now > this.endDate) this.status = 'completed';
+  else this.status = 'ongoing';
+  return this.save();
+};
+
+export const Event = mongoose.model<IEvent>("Event", EventSchema);

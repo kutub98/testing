@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -333,7 +332,7 @@ export const getUserDetailsWithParticipations = async (
 
 export const updateUserProfile = async (req: AuthRequest, res: Response) => {
   try {
-    const updateData: any = { ...req.body };
+    let updateData: any = { ...req.body };
     // Explicitly handle dateOfBirth (fix for CastError)
     if (updateData.dateOfBirth) {
       const dateStr = updateData.dateOfBirth;
