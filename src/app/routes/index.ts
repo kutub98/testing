@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { UserRoutes } from '../modules/User/user.route';
+// import { UserRoutes } from '../modules/User/user.route';
 import { BannerRoutes } from '../modules/Banner/Banner.route';
 import { OfferRouter } from '../modules/Offer/Package.route';
 import { JudgesRouter } from '../modules/judgePannel/judge.route';
