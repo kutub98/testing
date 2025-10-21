@@ -4,7 +4,7 @@ import { OfferRouter } from '../modules/Offer/Package.route';
 import { JudgesRouter } from '../modules/judgePannel/judge.route';
 import { TimeInstructionRouter } from '../modules/timeInstruction/timeInstruction.route';
 import { FaQRouter } from '../modules/FqA/faq.route';
-import { UserRoutes } from '../modules/User/user.route';
+// import { UserRoutes } from '../modules/User/user.route';
 import { EventRouter } from '../modules/events/event.route';
 import { QuizRouter } from '../modules/quiz/quiz.route';
 import { QuestionRouter } from '../modules/questions/questions.route';
@@ -24,7 +24,7 @@ const moduleRoutes: TModuleRoutes[] = [
   { path: '/judge', route: JudgesRouter },
   { path: '/time-instruction', route: TimeInstructionRouter },
   { path: '/faq', route: FaQRouter },
-  { path: '/auth', route: UserRoutes },
+  // { path: '/auth', route: UserRoutes },
 
   { path: '/events', route: EventRouter },
   { path: '/quizzes', route: QuizRouter },
